@@ -1,9 +1,17 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-  res.end("Hello, this is a basic web app!");
+// Home route
+app.get('/', (req, res) => {
+  res.send('Hello, World');
 });
 
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// About route (modify this in feature branch)
+app.get('/about', (req, res) => {
+  res.send('About Page');
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
